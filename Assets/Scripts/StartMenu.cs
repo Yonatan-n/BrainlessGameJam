@@ -32,6 +32,7 @@ public class StartMenu : MonoBehaviour
     void startGame()
     {
         Debug.Log("game start");
+        SceneLoader.LoadNextScene();
     }
     void OpenOptions()
     {
