@@ -67,5 +67,19 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "BranlessGameJam.slnx"
+    "dotnet.defaultSolution": "BranlessGameJam.slnx",
+    
+	// Controls whether the editor should automatically format the pasted content. A formatter must be available and the formatter should be able to format a range in a document.
+	"editor.formatOnPaste": false,
+	// Format a file on save. A formatter must be available and the editor must not be shutting down. When `files.autoSave` is set to `afterDelay`, the file will only be formatted when saved explicitly.
+	"editor.formatOnSave": true,
+	// Controls if format on save formats the whole file or only modifications. Only applies when `editor.formatOnSave` is enabled.
+	//  - file: Format the whole file.
+	//  - modifications: Format modifications (requires source control).
+	//  - modificationsIfAvailable: Will attempt to format modifications only (requires source control). If source control can't be used, then the whole file will be formatted.
+	"editor.formatOnSaveMode": "file",
+
+	// Controls whether the editor should automatically format the line after typing.
+	"editor.formatOnType": false,
+
 }
