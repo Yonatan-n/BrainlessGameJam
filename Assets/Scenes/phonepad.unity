@@ -1102,7 +1102,7 @@ PrefabInstance:
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 795441371}
+      objectReference: {fileID: 795441375}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1113,7 +1113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PhoneButton, Assembly-CSharp
+      value: NumberButton, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1125,7 +1125,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3150659083967955366, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 795441371}
+      addedObject: {fileID: 795441375}
   m_SourcePrefab: {fileID: 100100000, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
 --- !u!224 &646901893 stripped
 RectTransform:
@@ -1146,7 +1146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3603290343334306389, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_text
-      value: 
+      value: ' '
       objectReference: {fileID: 0}
     - target: {fileID: 6132536412381546974, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_Pivot.x
@@ -1239,7 +1239,7 @@ PrefabInstance:
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1192559189}
+      objectReference: {fileID: 1192559193}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1250,7 +1250,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PhoneButton, Assembly-CSharp
+      value: NumberButton, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1262,7 +1262,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3150659083967955366, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1192559189}
+      addedObject: {fileID: 1192559193}
   m_SourcePrefab: {fileID: 100100000, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
 --- !u!224 &710999081 stripped
 RectTransform:
@@ -1326,7 +1326,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3150659083967955366, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
   m_PrefabInstance: {fileID: 646901892}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &795441371
+--- !u!114 &795441375
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1335,11 +1335,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 795441367}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc88d3fe1664cf94e84369b2cd64492f, type: 3}
+  m_Script: {fileID: 11500000, guid: 19b320802e6a3534aacc5597af1041e2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PhoneButton
-  _letters: {fileID: 0}
-  _currentLetter: 0
+  m_EditorClassIdentifier: Assembly-CSharp::NumberButton
+  clickAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: e34d6686-406f-4858-bd67-5c10cde94ce4
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  _fastTypeDelay: 0.25
 --- !u!1001 &830746299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1451,7 +1459,7 @@ PrefabInstance:
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1894870585}
+      objectReference: {fileID: 1894870589}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1462,7 +1470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PhoneButton, Assembly-CSharp
+      value: NumberButton, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1474,7 +1482,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3150659083967955366, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1894870585}
+      addedObject: {fileID: 1894870589}
   m_SourcePrefab: {fileID: 100100000, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
 --- !u!224 &830746300 stripped
 RectTransform:
@@ -1592,7 +1600,7 @@ PrefabInstance:
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1175742455}
+      objectReference: {fileID: 1175742459}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1603,7 +1611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PhoneButton, Assembly-CSharp
+      value: NumberButton, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1615,7 +1623,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3150659083967955366, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1175742455}
+      addedObject: {fileID: 1175742459}
   m_SourcePrefab: {fileID: 100100000, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
 --- !u!224 &834080504 stripped
 RectTransform:
@@ -1951,7 +1959,7 @@ PrefabInstance:
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1042847503}
+      objectReference: {fileID: 1042847507}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1962,7 +1970,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PhoneButton, Assembly-CSharp
+      value: NumberButton, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1974,14 +1982,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3150659083967955366, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1042847503}
+      addedObject: {fileID: 1042847507}
   m_SourcePrefab: {fileID: 100100000, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
 --- !u!224 &1042847498 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6132536412381546974, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
   m_PrefabInstance: {fileID: 1042847497}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1042847503
+--- !u!114 &1042847507
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1990,11 +1998,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 334474178}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc88d3fe1664cf94e84369b2cd64492f, type: 3}
+  m_Script: {fileID: 11500000, guid: 19b320802e6a3534aacc5597af1041e2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PhoneButton
-  _letters: {fileID: 0}
-  _currentLetter: 0
+  m_EditorClassIdentifier: Assembly-CSharp::NumberButton
+  clickAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: f78f7d22-4f3c-4b9d-994f-3dca576d3498
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  _fastTypeDelay: 0.25
 --- !u!1001 &1069442308
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2106,7 +2122,7 @@ PrefabInstance:
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1069442313}
+      objectReference: {fileID: 1069442317}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -2117,7 +2133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PhoneButton, Assembly-CSharp
+      value: NumberButton, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -2129,14 +2145,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3150659083967955366, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1069442313}
+      addedObject: {fileID: 1069442317}
   m_SourcePrefab: {fileID: 100100000, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
 --- !u!224 &1069442309 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6132536412381546974, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
   m_PrefabInstance: {fileID: 1069442308}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1069442313
+--- !u!114 &1069442317
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2145,11 +2161,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 137089931}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc88d3fe1664cf94e84369b2cd64492f, type: 3}
+  m_Script: {fileID: 11500000, guid: 19b320802e6a3534aacc5597af1041e2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PhoneButton
-  _letters: {fileID: 0}
-  _currentLetter: 0
+  m_EditorClassIdentifier: Assembly-CSharp::NumberButton
+  clickAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: f097d4d7-f389-4fc4-994f-dafc2dae67e9
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  _fastTypeDelay: 0.25
 --- !u!1 &1131739807
 GameObject:
   m_ObjectHideFlags: 0
@@ -2292,7 +2316,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3150659083967955366, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
   m_PrefabInstance: {fileID: 834080503}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1175742455
+--- !u!114 &1175742459
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2301,17 +2325,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 1175742451}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc88d3fe1664cf94e84369b2cd64492f, type: 3}
+  m_Script: {fileID: 11500000, guid: 19b320802e6a3534aacc5597af1041e2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PhoneButton
-  _letters: {fileID: 0}
-  _currentLetter: 0
+  m_EditorClassIdentifier: Assembly-CSharp::NumberButton
+  clickAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 4f762bf6-50eb-47ca-afeb-67fe80a2bfac
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  _fastTypeDelay: 0.25
 --- !u!1 &1192559185 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3150659083967955366, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
   m_PrefabInstance: {fileID: 710999080}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1192559189
+--- !u!114 &1192559193
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2320,11 +2352,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1192559185}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc88d3fe1664cf94e84369b2cd64492f, type: 3}
+  m_Script: {fileID: 11500000, guid: 19b320802e6a3534aacc5597af1041e2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PhoneButton
-  _letters: {fileID: 0}
-  _currentLetter: 0
+  m_EditorClassIdentifier: Assembly-CSharp::NumberButton
+  clickAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 22bd9eb7-b429-4881-9aae-0f0c19e42001
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  _fastTypeDelay: 0.25
 --- !u!1 &1264953622 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3150659083967955366, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
@@ -2342,8 +2382,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc88d3fe1664cf94e84369b2cd64492f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhoneButton
-  _letters: {fileID: 0}
-  _currentLetter: 0
 --- !u!1001 &1363566839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2455,7 +2493,7 @@ PrefabInstance:
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1363566844}
+      objectReference: {fileID: 1363566848}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -2466,7 +2504,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PhoneButton, Assembly-CSharp
+      value: NumberButton, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -2478,14 +2516,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3150659083967955366, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1363566844}
+      addedObject: {fileID: 1363566848}
   m_SourcePrefab: {fileID: 100100000, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
 --- !u!224 &1363566840 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6132536412381546974, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
   m_PrefabInstance: {fileID: 1363566839}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1363566844
+--- !u!114 &1363566848
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2494,11 +2532,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 718469325}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc88d3fe1664cf94e84369b2cd64492f, type: 3}
+  m_Script: {fileID: 11500000, guid: 19b320802e6a3534aacc5597af1041e2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PhoneButton
-  _letters: {fileID: 0}
-  _currentLetter: 0
+  m_EditorClassIdentifier: Assembly-CSharp::NumberButton
+  clickAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 50ea70f1-a894-434c-94d6-b2bbd9ad525c
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  _fastTypeDelay: 0.25
 --- !u!1 &1468600538
 GameObject:
   m_ObjectHideFlags: 0
@@ -2768,14 +2814,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc88d3fe1664cf94e84369b2cd64492f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhoneButton
-  _letters: {fileID: 0}
-  _currentLetter: 0
 --- !u!1 &1894870581 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3150659083967955366, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
   m_PrefabInstance: {fileID: 830746299}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1894870585
+--- !u!114 &1894870589
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2784,11 +2828,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1894870581}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc88d3fe1664cf94e84369b2cd64492f, type: 3}
+  m_Script: {fileID: 11500000, guid: 19b320802e6a3534aacc5597af1041e2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PhoneButton
-  _letters: {fileID: 0}
-  _currentLetter: 0
+  m_EditorClassIdentifier: Assembly-CSharp::NumberButton
+  clickAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 0a3c050c-5923-410d-88b4-e427480587e3
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  _fastTypeDelay: 0.25
 --- !u!1001 &1920092678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2900,7 +2952,7 @@ PrefabInstance:
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1920092683}
+      objectReference: {fileID: 1920092687}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -2911,7 +2963,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PhoneButton, Assembly-CSharp
+      value: NumberButton, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -2923,14 +2975,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3150659083967955366, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1920092683}
+      addedObject: {fileID: 1920092687}
   m_SourcePrefab: {fileID: 100100000, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
 --- !u!224 &1920092679 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6132536412381546974, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
   m_PrefabInstance: {fileID: 1920092678}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1920092683
+--- !u!114 &1920092687
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2939,11 +2991,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1612857056}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc88d3fe1664cf94e84369b2cd64492f, type: 3}
+  m_Script: {fileID: 11500000, guid: 19b320802e6a3534aacc5597af1041e2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PhoneButton
-  _letters: {fileID: 0}
-  _currentLetter: 0
+  m_EditorClassIdentifier: Assembly-CSharp::NumberButton
+  clickAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 0ea628c8-07c6-47ae-9d76-b7f3bb0d3e8e
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  _fastTypeDelay: 0.25
 --- !u!1 &2007213500
 GameObject:
   m_ObjectHideFlags: 0
@@ -3054,9 +3114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3603290343334306389, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_text
-      value: 'tuv
-
-'
+      value: tuv
       objectReference: {fileID: 0}
     - target: {fileID: 6132536412381546974, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_Pivot.x
@@ -3149,7 +3207,7 @@ PrefabInstance:
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2075865909}
+      objectReference: {fileID: 2075865913}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -3160,7 +3218,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PhoneButton, Assembly-CSharp
+      value: NumberButton, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -3172,14 +3230,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3150659083967955366, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2075865909}
+      addedObject: {fileID: 2075865913}
   m_SourcePrefab: {fileID: 100100000, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
 --- !u!224 &2075865905 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6132536412381546974, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
   m_PrefabInstance: {fileID: 2075865904}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2075865909
+--- !u!114 &2075865913
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3188,11 +3246,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1746175128}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc88d3fe1664cf94e84369b2cd64492f, type: 3}
+  m_Script: {fileID: 11500000, guid: 19b320802e6a3534aacc5597af1041e2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PhoneButton
-  _letters: {fileID: 0}
-  _currentLetter: 0
+  m_EditorClassIdentifier: Assembly-CSharp::NumberButton
+  clickAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 546b495b-c1b1-478d-a4a9-49a2cf14547e
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  _fastTypeDelay: 0.25
 --- !u!1001 &6187528186045884003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3302,11 +3368,19 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6187528186045884008}
+      objectReference: {fileID: 6187528186045884012}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
@@ -3315,6 +3389,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DeleteButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: PhoneButton, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
@@ -3327,14 +3405,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3150659083967955366, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6187528186045884008}
+      addedObject: {fileID: 6187528186045884012}
   m_SourcePrefab: {fileID: 100100000, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
 --- !u!224 &6187528186045884004 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6132536412381546974, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
   m_PrefabInstance: {fileID: 6187528186045884003}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6187528186045884008
+--- !u!114 &6187528186045884012
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3343,11 +3421,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 2009501811}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc88d3fe1664cf94e84369b2cd64492f, type: 3}
+  m_Script: {fileID: 11500000, guid: b76d4237a5fe9b448b1e876c0457b41e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PhoneButton
-  _letters: {fileID: 0}
-  _currentLetter: 0
+  m_EditorClassIdentifier: Assembly-CSharp::DeleteButton
+  clickAction:
+    m_Name: Click
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 25a48e49-ac5f-4d7d-906e-03bac63cb878
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

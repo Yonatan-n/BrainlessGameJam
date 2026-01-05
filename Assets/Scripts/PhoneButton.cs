@@ -1,7 +1,15 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
-public abstract class PhoneButton : MonoBehaviour
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+
+public abstract class PhoneButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+
+    private bool _mouseHovering = false;
+
+    public InputAction clickAction;
 
     public virtual void Awake()
     {
@@ -13,10 +21,42 @@ public abstract class PhoneButton : MonoBehaviour
 
     }
 
+    public virtual void OnPointerEnter(PointerEventData eventData)
+    {
+        _mouseHovering = true;
+        Debug.Log("Mouse entered button!");
+        gameObject.GetComponent<Image>().color = Color.grey;
+    }
+
+    public virtual void OnPointerExit(PointerEventData eventData)
+    {
+        _mouseHovering = false;
+        Debug.Log("Mouse exited button!");
+        gameObject.GetComponent<Image>().color = Color.black;
+
+    }
+
     // Update is called once per frame
     void Update()
     {
+        if (_mouseHovering)
+        {
+            if (Mouse.current.leftButton.wasPressedThisFrame)
+                OnMousePressedThisFrame();
 
+            if (Mouse.current.leftButton.isPressed)
+                OnMouseDown();
+        }
+    }
+
+    public virtual void OnMousePressedThisFrame()
+    {
+
+    }
+
+    public virtual void OnMouseDown()
+    {
+        Debug.Log("button on mouse down");
     }
 
     public virtual void OnButtonClick()

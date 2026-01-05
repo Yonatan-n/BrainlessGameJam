@@ -8,6 +8,8 @@ public class PhoneController : MonoBehaviour
 
     private static PhoneController _instance;
 
+    private float _removeTextDelay = 0.1f;
+    private float _removeTextTimer = 0.0f;
 
     public static PhoneController Instance
     {
@@ -40,6 +42,11 @@ public class PhoneController : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        _inputWord.text = "";
+    }
+
     public void TypeLetter(char letter, bool fastTyping)
     {
         if (!fastTyping || _inputWord.text.Length == 0)
@@ -59,4 +66,26 @@ public class PhoneController : MonoBehaviour
         }
     }
 
+    public void RemoveText(float clickTimer = 0.0f)
+    {
+        if (_inputWord.text.Length > 0)
+        {
+            if (clickTimer <= 0.0f)
+            {
+                _inputWord.text = _inputWord.text.Remove(_inputWord.text.Length - 1);
+            }
+
+            else if (clickTimer > 1.0f)
+            {
+                _removeTextTimer += Time.deltaTime;
+                if (_removeTextTimer > _removeTextDelay)
+                {
+                    _inputWord.text = _inputWord.text.Remove(_inputWord.text.Length - 1);
+                    _removeTextTimer = 0.0f;
+                }
+                _removeTextDelay -= clickTimer * Time.deltaTime * 0.04f;
+            }
+        }
+
+    }
 }
