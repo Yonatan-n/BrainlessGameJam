@@ -15,8 +15,8 @@ public class SceneLoader : MonoBehaviour
 
     static public void LoadNextScene()
     {
-        // will break on last scene, loop back to main menu
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        // will break on last scene, maybe loop back to main menu
         SceneManager.LoadScene(currentSceneIndex + 1);
     }
 
