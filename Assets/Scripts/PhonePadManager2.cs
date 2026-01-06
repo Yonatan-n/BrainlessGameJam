@@ -8,7 +8,7 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 
-public class PhonePadManager : MonoBehaviour
+public class PhonePadManager2 : MonoBehaviour
 {
     private AudioSource source;
     List<AudioClip> loadedClips = new List<AudioClip>();

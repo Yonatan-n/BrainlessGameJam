@@ -27,7 +27,7 @@ public class PhonePad : MonoBehaviour
 
     void soundOnClick()
     {
-        PhonePadManager padManagerScript = GetComponentInParent<PhonePadManager>();
+        PhonePadManager2 padManagerScript = GetComponentInParent<PhonePadManager2>();
         padManagerScript.PlaySound(getIndexOfButton.IndexOf(gameObject.name));
     }
     // Update is called once per frame

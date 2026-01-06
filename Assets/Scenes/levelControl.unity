@@ -1284,6 +1284,7 @@ GameObject:
   m_Component:
   - component: {fileID: 724313354}
   - component: {fileID: 724313355}
+  - component: {fileID: 724313356}
   m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
@@ -1419,6 +1420,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &724313356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724313353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c80c66af753b154fb1ddb668e434957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PhonePadManager2
 --- !u!1 &795441367 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3150659083967955366, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
