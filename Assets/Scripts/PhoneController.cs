@@ -6,6 +6,8 @@ public class PhoneController : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _inputWord;
 
+    public string InputWord => _inputWord.text;
+
     private static PhoneController _instance;
 
     private float _removeTextDelay = 0.1f;
