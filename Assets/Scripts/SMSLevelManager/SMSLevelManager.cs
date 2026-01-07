@@ -2,13 +2,6 @@ using UnityEngine;
 using System.Collections.Generic;
 class SMSLevelManager
 {
-    //public int LevelCount => _smsLevels.Count;
-
-    public SMSLevelManager()
-    {
-
-    }
-
 
     //returns all levels by sectionID
     public List<StoryRow> GetLevelSection(int section)
