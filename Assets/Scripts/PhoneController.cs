@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections.Generic;
 
 public class PhoneController : MonoBehaviour
 {
@@ -10,7 +11,14 @@ public class PhoneController : MonoBehaviour
 
     private float _removeTextDelay = 0.1f;
     private float _removeTextTimer = 0.0f;
-
+    [SerializeField] AudioSource audioSource;
+    private List<AudioClip> loadedClips = new List<AudioClip>();
+    private List<string> getIndexOfButton = new List<string>{
+        "Pad 1", "Pad 2", "Pad 3",
+        "Pad 4", "Pad 5", "Pad 6",
+        "Pad 7", "Pad 8", "Pad 9",
+        "Pad 0", "Asterisk", "Hashtag",
+    };
     public static PhoneController Instance
     {
         get
@@ -45,10 +53,32 @@ public class PhoneController : MonoBehaviour
     private void Start()
     {
         _inputWord.text = "";
+
+        audioSource = GetComponent<AudioSource>();
+        var clipsByOrder = new List<string> {
+            "Sounds/button1",
+            "Sounds/button2",
+            "Sounds/button3",
+            "Sounds/button4",
+            "Sounds/button5",
+            "Sounds/button6",
+            "Sounds/button7",
+            "Sounds/button8",
+            "Sounds/button9",
+            "Sounds/button0",
+            "Sounds/button_star",
+            "Sounds/button#",
+        };
+        foreach (var path in clipsByOrder)
+        {
+            AudioClip clip = Resources.Load<AudioClip>(path);
+            loadedClips.Add(clip);
+        }
     }
 
-    public void TypeLetter(char letter, bool fastTyping)
+    public void TypeLetter(char letter, bool fastTyping, GameObject Phonebutton)
     {
+        playSound(Phonebutton);
         if (!fastTyping || _inputWord.text.Length == 0)
         {
             _inputWord.text += letter;
@@ -87,5 +117,11 @@ public class PhoneController : MonoBehaviour
             }
         }
 
+    }
+
+    public void playSound(GameObject Phonebutton)
+    {
+        var index = getIndexOfButton.IndexOf(Phonebutton.name);
+        audioSource.PlayOneShot(loadedClips[index]);
     }
 }

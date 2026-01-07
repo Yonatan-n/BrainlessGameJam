@@ -24,14 +24,14 @@ public abstract class PhoneButton : MonoBehaviour, IPointerEnterHandler, IPointe
     public virtual void OnPointerEnter(PointerEventData eventData)
     {
         _mouseHovering = true;
-        Debug.Log("Mouse entered button!");
+        // Debug.Log("Mouse entered button!");
         gameObject.GetComponent<Image>().color = Color.grey;
     }
 
     public virtual void OnPointerExit(PointerEventData eventData)
     {
         _mouseHovering = false;
-        Debug.Log("Mouse exited button!");
+        // Debug.Log("Mouse exited button!");
         gameObject.GetComponent<Image>().color = Color.black;
 
     }
@@ -56,11 +56,11 @@ public abstract class PhoneButton : MonoBehaviour, IPointerEnterHandler, IPointe
 
     public virtual void OnMouseDown()
     {
-        Debug.Log("button on mouse down");
+        // Debug.Log("button on mouse down");
     }
 
     public virtual void OnButtonClick()
     {
-        Debug.Log("Button clicked!");
+        // Debug.Log("Button clicked!");
     }
 }
