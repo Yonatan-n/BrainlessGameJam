@@ -9,6 +9,22 @@ class SMSLevelManager
     public SMSLevelManager()
     {
         _smsLevels = new List<SMSLevel>();
+
+        //This is the parced csv after it was loaded from csv file
+        string[,] parsedCSV =    {{"Section 1", "Best Friend", "Hi are you on the bus? I don't see you here" ,
+                                        "Did it pass `already`? I'm stil at the stop",
+                                        "lol you missed it again :P", "30"},   // row 0
+                                        
+                                        {"Section 1","Best Friend", "", "Can you cover for me? make up `something`?", "I got U", "30"},
+
+                                        {"Section 1","Teacher", "Good morning, I'm running a bit late, can you tell the class to start reading at page 12?", "`4sure`", ":|", "30"},
+
+                                        {"Section 1","Best Friend", "", "Teacher just msg me he is running late, tell the class to start reading at `page 12`", "Wat I already msg him dat U R in UR grama's funeral", "30"}
+
+                                    };
+
+        LoadLevelsFromCSV(parsedCSV);
+
     }
 
     public void LoadLevelsFromCSV(string[,] parsedCSV)
