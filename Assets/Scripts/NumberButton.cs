@@ -4,6 +4,9 @@ using TMPro;
 public class NumberButton : PhoneButton
 {
     private TextMeshProUGUI _letters;
+    private TextMeshProUGUI _number;
+
+    private string _displayChars;
     private int _currentLetterIndex;
     private float _timeSinceLastButtonClick = 0.0f;
 
@@ -16,6 +19,8 @@ public class NumberButton : PhoneButton
     {
         base.Awake();
         _letters = transform.Find("Text (TMP) (1)").gameObject.GetComponent<TextMeshProUGUI>();
+        _number = transform.Find("Text (TMP)").gameObject.GetComponent<TextMeshProUGUI>();
+        _displayChars = _letters.text + _number.text;
         _currentLetterIndex = 0;
     }
 
@@ -30,7 +35,7 @@ public class NumberButton : PhoneButton
         else
         {
             _currentLetterIndex++;
-            _currentLetterIndex = _currentLetterIndex % _letters.text.Length;
+            _currentLetterIndex = _currentLetterIndex % _displayChars.Length;
         }
         _typeLetter = true;
     }
@@ -39,7 +44,7 @@ public class NumberButton : PhoneButton
     {
         if (_typeLetter)
         {
-            PhoneController.Instance.TypeLetter(_letters.text[_currentLetterIndex], _timeSinceLastButtonClick < _fastTypeDelay);
+            PhoneController.Instance.TypeLetter(_displayChars[_currentLetterIndex], _timeSinceLastButtonClick < _fastTypeDelay);
             _typeLetter = false;
             _timeSinceLastButtonClick = 0.0f;
         }

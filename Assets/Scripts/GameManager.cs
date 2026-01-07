@@ -92,7 +92,7 @@ class GameManager : MonoBehaviour
 
         var parts = template.Split('`');
 
-        if (parts[1] == PhoneController.Instance.InputWord)
+        if ((parts.Length > 1 && parts[1] == PhoneController.Instance.InputWord) || parts[0] == PhoneController.Instance.InputWord)
             OnLevelCompleted();
         else
             Debug.Log("You entered the wrong word!");
