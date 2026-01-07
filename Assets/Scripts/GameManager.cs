@@ -9,6 +9,10 @@ class GameManager : MonoBehaviour
     private SMSLevelManager _smsLevelManager;
     private static GameManager _instance;
 
+    private LevelScript _levelScript;
+
+    public LevelScript LevelScript => _levelScript;
+
     private Stack<string> _incomingMessages = new Stack<string>();
 
     public Stack<string> IncomingMessages => _incomingMessages;
@@ -38,6 +42,7 @@ class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        _levelScript = GetComponent<LevelScript>();
         _smsLevelManager = new SMSLevelManager();
 
         GameUIManager.Initialize();
@@ -85,18 +90,9 @@ class GameManager : MonoBehaviour
         if (template == "")
             return;
 
-        var backTickIndex1 = template.IndexOf("`");
-        bool hasBackTicks = backTickIndex1 != -1;
+        var parts = template.Split('`');
 
-        //check if template has backticks ad update the template to the word in backticks
-        if (hasBackTicks)
-        {
-            var backTickIndex2 = template.IndexOf("`", backTickIndex1 + 1);
-            template = template.Substring(backTickIndex1 + 1, backTickIndex2 + 1 - (backTickIndex1 + 2));
-        }
-        Debug.Log("template: " + template);
-
-        if (template == PhoneController.Instance.InputWord)
+        if (parts[1] == PhoneController.Instance.InputWord)
             OnLevelCompleted();
         else
             Debug.Log("You entered the wrong word!");
