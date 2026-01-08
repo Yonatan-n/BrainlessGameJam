@@ -1,10 +1,14 @@
 using TMPro;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timerTMP;
     private float countDown = 59;
+
+    [SerializeField]
+    private List<string> _wordsTemplate;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -17,6 +21,7 @@ public class GameManager : MonoBehaviour
         // get 5 words from our dict (cya, brb, u2, 4ever)
         // combine both lists and randomize for a 20 words sentence.
         // mabybe 100 words just to be safe
+        UIManager.Initialize();
     }
 
     // Update is called once per frame
