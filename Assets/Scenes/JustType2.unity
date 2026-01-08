@@ -2898,15 +2898,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3fa3193fe427f424d883d762fef26dc7, type: 2}
+  m_sharedMaterial: {fileID: -4679015820599773715, guid: 3fa3193fe427f424d883d762fef26dc7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
     rgba: 4280352512
-  m_fontColor: {r: 0, g: 1, b: 0.12483883, a: 1}
+  m_fontColor: {r: 0, g: 0.4490565, b: 0.056352187, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3126,7 +3126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   timerTMP: {fileID: 446326046}
-  _wordsTemplateAnimSpeed: 0
+  _wordsTemplateAnimDelay: 1
 --- !u!1 &1894870581 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3150659083967955366, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
