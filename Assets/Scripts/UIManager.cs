@@ -21,6 +21,7 @@ public static class UIManager
         Vector3[] corners = new Vector3[4];
         _animatedWordsTemplate.transform.GetComponent<RectTransform>().GetWorldCorners(corners);
         _animatedWordsTemplateContainerStartPos = (corners[0] + corners[1]) / 2f;
+        _animatedWordsTemplate.transform.Find("Text").GetComponent<TextMeshProUGUI>().overrideColorTags = true;
     }
 
     public static void IncreasePoints(int points)
@@ -63,6 +64,8 @@ public static class UIManager
             text = text.Substring(1);
 
         _animatedWordsTemplate.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = text;
+        _animatedWordsTemplate.transform.Find("Text").GetComponent<TextMeshProUGUI>().ForceMeshUpdate();
+        textInfo = _animatedWordsTemplate.transform.Find("Text").GetComponent<TextMeshProUGUI>().textInfo;
 
 
         //Display the current template word in green
@@ -72,27 +75,25 @@ public static class UIManager
         {
             Debug.Log("mark current word template!");
             var start = i;
-            var end = i + GameManager.Instance.CurrentWordTemplate.Length - 1;
+            var end = i + GameManager.Instance.CurrentWordTemplate.Length;
+
             for (int j = start; j < end; j++)
             {
-                charInfo = textInfo.characterInfo[j];
+                TMP_CharacterInfo chInfo = textInfo.characterInfo[j];
 
-                int meshIndex = charInfo.materialReferenceIndex;
-                int vertexIndex = charInfo.vertexIndex;
+                int meshIndex = chInfo.materialReferenceIndex;
+                int vertexIndex = chInfo.vertexIndex;
 
                 Color32[] colors = textInfo.meshInfo[meshIndex].colors32;
 
-                colors[vertexIndex + 0] = Color.green;
-                colors[vertexIndex + 1] = Color.green;
-                colors[vertexIndex + 2] = Color.green;
-                colors[vertexIndex + 3] = Color.green;
-
-                // Apply changes
-                //_animatedWordsTemplate.transform.Find("Text").GetComponent<TextMeshProUGUI>().UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
+                colors[vertexIndex + 0] = Color.blue;
+                colors[vertexIndex + 1] = Color.blue;
+                colors[vertexIndex + 2] = Color.blue;
+                colors[vertexIndex + 3] = Color.blue;
 
             }
-            _animatedWordsTemplate.transform.Find("Text").GetComponent<TextMeshProUGUI>().UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
-            _animatedWordsTemplate.transform.Find("Text").GetComponent<TextMeshProUGUI>().ForceMeshUpdate();
+            // Apply changes
+            _animatedWordsTemplate.transform.Find("Text").GetComponent<TextMeshProUGUI>().UpdateVertexData(TMP_VertexDataUpdateFlags.All);
         }
 
     }

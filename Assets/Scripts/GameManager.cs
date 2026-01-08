@@ -14,12 +14,12 @@ public class GameManager : MonoBehaviour
 
     private int _currentWordIndex = 0;
 
-    public string CurrentWordTemplate => WordsTemplate[_currentWordIndex];
+    public string CurrentWordTemplate => WordsTemplate[_currentWordTemplateIndex];
 
     private int _currentWordTemplateIndex;
 
     [SerializeField]
-    private float _wordsTemplateAnimSpeed;
+    private float _wordsTemplateAnimDelay;
 
     private static GameManager _instance;
 
@@ -60,12 +60,12 @@ public class GameManager : MonoBehaviour
         //Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
 
         _wordsTemplate = new List<string>
-                        { "lorem","ipsum","dolor","sit","amet,","consetetur","sadipiscing","elitr,","sed","diam"};
+                        { "lorem","ipsum","dolor","sit","amet","consetetur","sadipiscing","elitr","sed","diam"};
 
         UIManager.Initialize();
         _currentWordIndex = 0;
         _currentWordTemplateIndex = 0;
-        StartCoroutine(UpdateAnimatedText(_wordsTemplateAnimSpeed));
+        StartCoroutine(UpdateAnimatedText(_wordsTemplateAnimDelay));
 
     }
 
