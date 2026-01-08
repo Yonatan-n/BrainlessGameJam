@@ -38,7 +38,7 @@ public class InputScreen : MonoBehaviour
 
     }
 
-    void UpdateCharacterPositions(bool remove, bool add)
+    void UpdateCharacterPositions(bool add)
     {
         _letters.ForceMeshUpdate();
         TMP_TextInfo textInfo = _letters.textInfo;
@@ -63,13 +63,7 @@ public class InputScreen : MonoBehaviour
 
         Vector3 worldPos = _letters.transform.TransformPoint(charCenter) + width / 2;
 
-
-        if (remove)
-        {
-            _letterPositions.RemoveAt(_letterPositions.Count - 1);
-        }
-
-        else if (add)
+        if (add)
         {
             _letterPositions.Add(worldPos);
         }
@@ -80,17 +74,23 @@ public class InputScreen : MonoBehaviour
 
     }
 
-    public void UpdateCursor(bool remove, bool add)
+    public void UpdateCursor(bool add)
     {
-        UpdateCharacterPositions(remove, add);
-        if (_letterPositions.Count == 0)
+        UpdateCharacterPositions(add);
+        /*if (_letterPositions.Count == 0)
             _cursor.Reset();
-        else
-            _cursor.SetPosition(_letterPositions[_letterPositions.Count - 1]);
-
+        else*/
+        _cursor.SetPosition(_letterPositions[_letterPositions.Count - 1]);
     }
 
-    public void ShiftLeft()
+    public void ResetText()
+    {
+        _letters.text = "";
+        _letterPositions.Clear();
+        _cursor.Reset();
+    }
+
+    /*public void ShiftLeft()
     {
         var rt = transform.parent.gameObject.GetComponent<RectTransform>();
         Vector3 v1 = _letterPositions[_letterPositions.Count - 1];
@@ -101,7 +101,7 @@ public class InputScreen : MonoBehaviour
             _letterPositions[i] -= v1 - _inputFieldStart - _cursorOffset;
 
         _cursor.Reset();
-    }
+    }*/
 
     // Update is called once per frame
     void Update()

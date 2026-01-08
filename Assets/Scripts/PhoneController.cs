@@ -8,6 +8,8 @@ public class PhoneController : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _inputWord;
 
+    public string InputWord => _inputWord.text;
+
     private static PhoneController _instance;
 
     private float _removeTextDelay = 0.1f;
@@ -21,8 +23,12 @@ public class PhoneController : MonoBehaviour
         "Pad 0", "Asterisk", "Hashtag",
     };
 
+    private float _timeSinceLastFastType = -1.0f;
+
     [SerializeField]
     private InputScreen _inputScreen;
+    public InputScreen InputScreen => _inputScreen;
+
     public static PhoneController Instance
     {
         get
@@ -85,37 +91,48 @@ public class PhoneController : MonoBehaviour
         playSound(Phonebutton);
         if (!fastTyping || _inputWord.text.Length == 0)
         {
-            if (letter == ' ')
-                _inputScreen.ShiftLeft();
-            else
-            {
-                _inputWord.text += letter;
-                _inputScreen.UpdateCursor(false, true);
-            }
+
+            _inputWord.text += letter;
+            _inputScreen.UpdateCursor(true);
+            GameManager.Instance.CheckPhoneText(_inputWord.text);
+
 
         }
+
         else if (fastTyping)
         {
+            _timeSinceLastFastType = 0.0f;
             char[] chars = _inputWord.text.ToCharArray();
             chars[_inputWord.text.Length - 1] = letter;
             string result = new string(chars);
             _inputWord.text = result;
-            _inputScreen.UpdateCursor(false, false);
+            _inputScreen.UpdateCursor(false);
         }
         else
         {
-            if (letter == ' ')
-                _inputScreen.ShiftLeft();
-            else
-            {
-                _inputWord.text += letter;
-                _inputScreen.UpdateCursor(true, false);
-            }
-        }
 
+            _inputWord.text += letter;
+            _inputScreen.UpdateCursor(true);
+            GameManager.Instance.CheckPhoneText(_inputWord.text);
+
+
+        }
     }
 
-    public void RemoveText(float clickTimer = 0.0f)
+    private void Update()
+    {
+        if (_timeSinceLastFastType > -1.0f)
+        {
+            _timeSinceLastFastType += Time.deltaTime;
+        }
+        if (_timeSinceLastFastType > 0.25f)
+        {
+            GameManager.Instance.CheckPhoneText(_inputWord.text);
+            _timeSinceLastFastType = -1.0f;
+        }
+    }
+
+    /*public void RemoveText(float clickTimer = 0.0f)
     {
         if (_inputWord.text.Length > 0)
         {
@@ -139,7 +156,7 @@ public class PhoneController : MonoBehaviour
             }
         }
 
-    }
+    }*/
 
     public void playSound(GameObject Phonebutton)
     {

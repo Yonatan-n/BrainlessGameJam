@@ -17,7 +17,7 @@ public class DeleteButton : PhoneButton
     public override void OnMousePressedThisFrame()
     {
         base.OnMousePressedThisFrame();
-        PhoneController.Instance.RemoveText(0);
+        //PhoneController.Instance.RemoveText(0);
         PhoneController.Instance.playSound(gameObject);
         _clickTimer = 0f;
     }
@@ -26,7 +26,7 @@ public class DeleteButton : PhoneButton
     {
         _clickTimer += Time.deltaTime;
         // Debug.Log(_clickTimer);
-        PhoneController.Instance.RemoveText(_clickTimer);
+        //PhoneController.Instance.RemoveText(_clickTimer);
     }
 
     public override void OnPointerExit(PointerEventData eventData)
