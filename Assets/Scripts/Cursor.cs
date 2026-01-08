@@ -1,9 +1,17 @@
 using UnityEngine;
 
-public class Cusor : MonoBehaviour
+public class Cursor : MonoBehaviour
 {
     private bool show = true;
     private float blinkSeconds = 0.5f;
+
+    private Vector3 _startingPosition;
+    public Vector3 StartingPosition => _startingPosition;
+
+    void Awake()
+    {
+        _startingPosition = transform.position;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,6 +21,16 @@ public class Cusor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    }
+
+    public void Reset()
+    {
+        transform.position = _startingPosition;
+    }
+
+    public void SetPosition(Vector3 position)
+    {
+        transform.position = position;
     }
 
     void blinkCursor()

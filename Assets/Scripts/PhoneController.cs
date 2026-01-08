@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
 
+
 public class PhoneController : MonoBehaviour
 {
     [SerializeField]
@@ -19,6 +20,9 @@ public class PhoneController : MonoBehaviour
         "Pad 7", "Pad 8", "Pad 9",
         "Pad 0", "Asterisk", "Hashtag",
     };
+
+    [SerializeField]
+    private InputScreen _inputScreen;
     public static PhoneController Instance
     {
         get
@@ -81,7 +85,14 @@ public class PhoneController : MonoBehaviour
         playSound(Phonebutton);
         if (!fastTyping || _inputWord.text.Length == 0)
         {
-            _inputWord.text += letter;
+            if (letter == ' ')
+                _inputScreen.ShiftLeft();
+            else
+            {
+                _inputWord.text += letter;
+                _inputScreen.UpdateCursor(false, true);
+            }
+
         }
         else if (fastTyping)
         {
@@ -89,11 +100,19 @@ public class PhoneController : MonoBehaviour
             chars[_inputWord.text.Length - 1] = letter;
             string result = new string(chars);
             _inputWord.text = result;
+            _inputScreen.UpdateCursor(false, false);
         }
         else
         {
-            _inputWord.text += letter;
+            if (letter == ' ')
+                _inputScreen.ShiftLeft();
+            else
+            {
+                _inputWord.text += letter;
+                _inputScreen.UpdateCursor(true, false);
+            }
         }
+
     }
 
     public void RemoveText(float clickTimer = 0.0f)
@@ -103,6 +122,7 @@ public class PhoneController : MonoBehaviour
             if (clickTimer <= 0.0f)
             {
                 _inputWord.text = _inputWord.text.Remove(_inputWord.text.Length - 1);
+                _inputScreen.UpdateCursor(true, false);
             }
 
             else if (clickTimer > 1.0f)
@@ -112,8 +132,10 @@ public class PhoneController : MonoBehaviour
                 {
                     _inputWord.text = _inputWord.text.Remove(_inputWord.text.Length - 1);
                     _removeTextTimer = 0.0f;
+                    _inputScreen.UpdateCursor(true, false);
                 }
                 _removeTextDelay -= clickTimer * Time.deltaTime * 0.04f;
+
             }
         }
 
