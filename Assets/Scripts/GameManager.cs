@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
 
         if (inputWord == _wordsTemplate[_currentWordTemplateIndex] || inputWord.Length == _wordsTemplate[_currentWordTemplateIndex].Length)
         {
-            PhoneController.Instance.InputScreen.ResetText();
+            StartCoroutine(ResetPhoneText());
             if (_currentWordTemplateIndex == _wordsTemplate.Count - 1)
             {
                 GameOver();
@@ -107,6 +107,12 @@ public class GameManager : MonoBehaviour
 
         }
 
+    }
+
+    private IEnumerator ResetPhoneText()
+    {
+        yield return new WaitForSeconds(0.2f);
+        PhoneController.Instance.InputScreen.ResetText();
     }
 
     private void UpdateCurrentWordTemplate()

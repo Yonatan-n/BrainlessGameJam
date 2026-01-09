@@ -62,6 +62,10 @@ public static class Utils
                 foundIndex2 = result;
                 matchingWord2 = word.Substring(i + 1);
             }
+            else
+            {
+                break;
+            }
         }
 
         if (foundIndex2 > -1 && foundIndex2 < foundIndex1)

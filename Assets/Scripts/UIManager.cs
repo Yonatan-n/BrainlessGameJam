@@ -62,14 +62,16 @@ public static class UIManager
 
         text += wordTemplate[index];
 
+        string matchingWord = "";
+        int i = Utils.FindFirstMatchingSubstring(text, GameManager.Instance.CurrentWordTemplate, out matchingWord);
         if (firstCharWorldPos.x <= _animatedWordsTemplateContainerStartPos.x + 50.0f)
         {
             text = text.Substring(1);
             //The current word template is not visible anymore in the animated text, so update it with the next word in animated text
-            if (text[0] == '-')
+            if (text[0] == '-' && matchingWord != GameManager.Instance.CurrentWordTemplate)
             {
                 _onWordDisappeared?.Invoke();
-                Debug.Log("WORD DISAPPEARED!");
+                Debug.Log("WORD TEMPLATE DISAPPEARED!");
             }
 
         }
@@ -78,12 +80,12 @@ public static class UIManager
         _animatedWordsTemplate.transform.Find("Text").GetComponent<TextMeshProUGUI>().ForceMeshUpdate();
         textInfo = _animatedWordsTemplate.transform.Find("Text").GetComponent<TextMeshProUGUI>().textInfo;
 
-        string matchingWord = "";
+        matchingWord = "";
         //Display the current template word in green once it is displayed completely
         //int i = text.IndexOf(GameManager.Instance.CurrentWordTemplate);
 
         //Display all remaining characters of the word template in green
-        int i = Utils.FindFirstMatchingSubstring(text, GameManager.Instance.CurrentWordTemplate, out matchingWord);
+        i = Utils.FindFirstMatchingSubstring(text, GameManager.Instance.CurrentWordTemplate, out matchingWord);
 
         if (i > -1)
         {
