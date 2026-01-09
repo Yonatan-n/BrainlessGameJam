@@ -43,7 +43,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
+    void Awake()
+    {
+        UIManager._onWordDisappeared += UpdateCurrentWordTemplate;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -104,6 +107,11 @@ public class GameManager : MonoBehaviour
 
         }
 
+    }
+
+    private void UpdateCurrentWordTemplate()
+    {
+        _currentWordTemplateIndex++;
     }
 
     private void GameOver()

@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Reflection;
 using TMPro;
-using System.Runtime.Versioning;
+using System;
 
 public static class UIManager
 {
@@ -12,6 +12,8 @@ public static class UIManager
 
     private static string _oldWordTemplate = "";
     private static string _currentWordTemplate = "";
+
+    public static event Action _onWordDisappeared;
 
     public static void Initialize()
     {
@@ -67,15 +69,18 @@ public static class UIManager
         _animatedWordsTemplate.transform.Find("Text").GetComponent<TextMeshProUGUI>().ForceMeshUpdate();
         textInfo = _animatedWordsTemplate.transform.Find("Text").GetComponent<TextMeshProUGUI>().textInfo;
 
+        string matchingWord = "";
+        //Display the current template word in green once it is displayed completely
+        //int i = text.IndexOf(GameManager.Instance.CurrentWordTemplate);
 
-        //Display the current template word in green
-        int i = text.IndexOf(GameManager.Instance.CurrentWordTemplate);
+        //Display all remaining characters of the word template in green
+        int i = Utils.FindFirstMatchingSubstring(text, GameManager.Instance.CurrentWordTemplate, out matchingWord);
 
         if (i > -1)
         {
             Debug.Log("mark current word template!");
             var start = i;
-            var end = i + GameManager.Instance.CurrentWordTemplate.Length;
+            var end = i + matchingWord.Length;
 
             for (int j = start; j < end; j++)
             {
@@ -94,6 +99,13 @@ public static class UIManager
             }
             // Apply changes
             _animatedWordsTemplate.transform.Find("Text").GetComponent<TextMeshProUGUI>().UpdateVertexData(TMP_VertexDataUpdateFlags.All);
+        }
+
+        //The current word template is not visible anymore in the animated text, so update it with the next word in animated text
+        else
+        {
+            _onWordDisappeared?.Invoke();
+            Debug.Log("WORD DISAPPEARED!");
         }
 
     }
