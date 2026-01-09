@@ -63,7 +63,16 @@ public static class UIManager
         text += wordTemplate[index];
 
         if (firstCharWorldPos.x <= _animatedWordsTemplateContainerStartPos.x + 50.0f)
+        {
             text = text.Substring(1);
+            //The current word template is not visible anymore in the animated text, so update it with the next word in animated text
+            if (text[0] == '-')
+            {
+                _onWordDisappeared?.Invoke();
+                Debug.Log("WORD DISAPPEARED!");
+            }
+
+        }
 
         _animatedWordsTemplate.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = text;
         _animatedWordsTemplate.transform.Find("Text").GetComponent<TextMeshProUGUI>().ForceMeshUpdate();
@@ -100,14 +109,6 @@ public static class UIManager
             // Apply changes
             _animatedWordsTemplate.transform.Find("Text").GetComponent<TextMeshProUGUI>().UpdateVertexData(TMP_VertexDataUpdateFlags.All);
         }
-
-        //The current word template is not visible anymore in the animated text, so update it with the next word in animated text
-        else
-        {
-            _onWordDisappeared?.Invoke();
-            Debug.Log("WORD DISAPPEARED!");
-        }
-
     }
 
 }
