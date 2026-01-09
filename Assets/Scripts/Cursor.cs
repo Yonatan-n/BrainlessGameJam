@@ -16,6 +16,8 @@ public class Cursor : MonoBehaviour
     void Start()
     {
         InvokeRepeating("blinkCursor", 0f, blinkSeconds);
+        //_startingPosition = transform.position;
+
     }
 
     // Update is called once per frame

@@ -98,7 +98,7 @@ public class PhoneController : MonoBehaviour
         {
 
             _inputWord.text += letter;
-            _inputScreen.UpdateCursor(true);
+            _inputScreen.UpdateCursor(true, false);
             GameManager.Instance.CheckPhoneText(_inputWord.text);
 
 
@@ -111,13 +111,13 @@ public class PhoneController : MonoBehaviour
             chars[_inputWord.text.Length - 1] = letter;
             string result = new string(chars);
             _inputWord.text = result;
-            _inputScreen.UpdateCursor(false);
+            _inputScreen.UpdateCursor(false, false);
         }
         else
         {
 
             _inputWord.text += letter;
-            _inputScreen.UpdateCursor(true);
+            _inputScreen.UpdateCursor(true, false);
             GameManager.Instance.CheckPhoneText(_inputWord.text);
 
 
@@ -139,14 +139,14 @@ public class PhoneController : MonoBehaviour
         }
     }
 
-    /*public void RemoveText(float clickTimer = 0.0f)
+    public void RemoveText(float clickTimer = 0.0f)
     {
         if (_inputWord.text.Length > 0)
         {
             if (clickTimer <= 0.0f)
             {
                 _inputWord.text = _inputWord.text.Remove(_inputWord.text.Length - 1);
-                _inputScreen.UpdateCursor(true, false);
+                _inputScreen.UpdateCursor(false, true);
             }
 
             else if (clickTimer > 1.0f)
@@ -156,14 +156,14 @@ public class PhoneController : MonoBehaviour
                 {
                     _inputWord.text = _inputWord.text.Remove(_inputWord.text.Length - 1);
                     _removeTextTimer = 0.0f;
-                    _inputScreen.UpdateCursor(true, false);
+                    _inputScreen.UpdateCursor(false, true);
                 }
                 _removeTextDelay -= clickTimer * Time.deltaTime * 0.04f;
 
             }
         }
 
-    }*/
+    }
 
     public void playSound(GameObject Phonebutton)
     {

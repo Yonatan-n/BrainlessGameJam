@@ -38,7 +38,7 @@ public class InputScreen : MonoBehaviour
 
     }
 
-    void UpdateCharacterPositions(bool add)
+    void UpdateCharacterPositions(bool add, bool remove)
     {
         _letters.ForceMeshUpdate();
         TMP_TextInfo textInfo = _letters.textInfo;
@@ -67,6 +67,11 @@ public class InputScreen : MonoBehaviour
         {
             _letterPositions.Add(worldPos);
         }
+        else if (remove)
+        {
+            if (_letterPositions.Count > 0)
+                _letterPositions.RemoveAt(_letterPositions.Count - 1);
+        }
         else
         {
             _letterPositions[_letterPositions.Count - 1] = worldPos;
@@ -74,19 +79,20 @@ public class InputScreen : MonoBehaviour
 
     }
 
-    public void UpdateCursor(bool add)
+    public void UpdateCursor(bool add, bool remove)
     {
-        UpdateCharacterPositions(add);
-        /*if (_letterPositions.Count == 0)
+        if (_letters.text.Length > 0)
+            UpdateCharacterPositions(add, remove);
+        if (_letterPositions.Count == 0)
             _cursor.Reset();
-        else*/
-        _cursor.SetPosition(_letterPositions[_letterPositions.Count - 1]);
+        else
+            _cursor.SetPosition(_letterPositions[_letterPositions.Count - 1]);
     }
 
     public void ResetText()
     {
         _letters.text = "";
-        _letterPositions.Clear();
+        //_letterPositions.Clear();
         _cursor.Reset();
     }
 
