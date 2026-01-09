@@ -2090,7 +2090,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978597787}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -3672,6 +3672,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PhoneController
   _inputWord: {fileID: 1545785171}
   audioSource: {fileID: 0}
+  _backgroundMusic: {fileID: 40593512}
   _inputScreen: {fileID: 1545785170}
 --- !u!82 &2007213505
 AudioSource:

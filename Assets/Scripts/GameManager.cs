@@ -75,10 +75,17 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        countDown -= Time.deltaTime;
-        float seconds = countDown % 60f;
+        //countDown -= Time.deltaTime;
+        /*float seconds = countDown % 60f;
         float minutes = Mathf.Floor(countDown / 60f);
+        timerTMP.text = "Time: " + string.Format("{0:00}:{1:00}", minutes, seconds);*/
+
+        float seconds = countDown - PhoneController.Instance.MusicTime;
+        float minutes = Mathf.Floor(countDown / 60f);
+
         timerTMP.text = "Time: " + string.Format("{0:00}:{1:00}", minutes, seconds);
+
+
     }
 
     public void CheckPhoneText(string inputWord)
