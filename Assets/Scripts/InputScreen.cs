@@ -83,7 +83,7 @@ public class InputScreen : MonoBehaviour
     {
         if (_letters.text.Length > 0)
             UpdateCharacterPositions(add, remove);
-        if (_letterPositions.Count == 0)
+        if (_letters.text.Length == 0)
             _cursor.Reset();
         else
             _cursor.SetPosition(_letterPositions[_letterPositions.Count - 1]);
@@ -92,7 +92,7 @@ public class InputScreen : MonoBehaviour
     public void ResetText()
     {
         _letters.text = "";
-        //_letterPositions.Clear();
+        _letterPositions.Clear();
         _cursor.Reset();
     }
 

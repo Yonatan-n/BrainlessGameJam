@@ -15,7 +15,7 @@ public static class UIManager
 
     public static event Action _onWordDisappeared;
 
-    public static void Initialize()
+    public static void Initialize(List<string> wordsTemplate)
     {
         _points = GameObject.Find("RootGame/Points");
         _animatedWordsTemplate = GameObject.Find("RootGame/AnimatedWords");
@@ -24,6 +24,15 @@ public static class UIManager
         _animatedWordsTemplate.transform.GetComponent<RectTransform>().GetWorldCorners(corners);
         _animatedWordsTemplateContainerStartPos = (corners[0] + corners[1]) / 2f;
         _animatedWordsTemplate.transform.Find("Text").GetComponent<TextMeshProUGUI>().overrideColorTags = true;
+
+        foreach (var word in wordsTemplate)
+        {
+            _animatedWordsTemplate.transform.Find("Text").GetComponent<TextMeshProUGUI>().text += word;
+            if (wordsTemplate.IndexOf(word) < wordsTemplate.Count - 1)
+            {
+                _animatedWordsTemplate.transform.Find("Text").GetComponent<TextMeshProUGUI>().text += "-";
+            }
+        }
     }
 
     public static void IncreasePoints(int points)
@@ -31,7 +40,38 @@ public static class UIManager
         _points.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = points.ToString();
     }
 
-    public static void UpdateAnimatedText(string wordTemplate, bool isCurrentWordTemplate, int index)
+    public static void UpdateWordsTemplate(string wordTemplate)
+    {
+        _animatedWordsTemplate.transform.Find("Text").GetComponent<TextMeshProUGUI>().ForceMeshUpdate();
+        var text = _animatedWordsTemplate.transform.Find("Text").GetComponent<TextMeshProUGUI>().text;
+        TMP_TextInfo textInfo = _animatedWordsTemplate.transform.Find("Text").GetComponent<TextMeshProUGUI>().textInfo;
+
+        int i = text.IndexOf(wordTemplate);
+
+        var start = i;
+        var end = i + wordTemplate.Length;
+
+        for (int j = start; j < end; j++)
+        {
+            TMP_CharacterInfo chInfo = textInfo.characterInfo[j];
+
+            int meshIndex = chInfo.materialReferenceIndex;
+            int vertexIndex = chInfo.vertexIndex;
+
+            Color32[] colors = textInfo.meshInfo[meshIndex].colors32;
+
+            colors[vertexIndex + 0] = Color.blue;
+            colors[vertexIndex + 1] = Color.blue;
+            colors[vertexIndex + 2] = Color.blue;
+            colors[vertexIndex + 3] = Color.blue;
+
+        }
+        // Apply changes
+        _animatedWordsTemplate.transform.Find("Text").GetComponent<TextMeshProUGUI>().UpdateVertexData(TMP_VertexDataUpdateFlags.All);
+    }
+
+
+    public static void UpdateAnimatedText(string wordTemplate, int index)
     {
         //Get the world position of the first character and check if its x coords are less than the left corner of 
         //the animated words template container

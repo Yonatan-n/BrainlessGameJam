@@ -65,10 +65,12 @@ public class GameManager : MonoBehaviour
         _wordsTemplate = new List<string>
                         { "lorem","ipsum","dolor","sit","amet","consetetur","sadipiscing","elitr","sed","diam"};
 
-        UIManager.Initialize();
+        UIManager.Initialize(_wordsTemplate);
         _currentWordIndex = 0;
         _currentWordTemplateIndex = 0;
-        StartCoroutine(UpdateAnimatedText(_wordsTemplateAnimDelay));
+        UIManager.UpdateWordsTemplate(_wordsTemplate[_currentWordTemplateIndex]);
+
+        //StartCoroutine(UpdateAnimatedText(_wordsTemplateAnimDelay));
 
     }
 
@@ -88,7 +90,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void CheckPhoneText(string inputWord)
+    /*public void CheckPhoneText(string inputWord)
     {
 
         if (_currentWordTemplateIndex == _wordsTemplate.Count)
@@ -111,10 +113,48 @@ public class GameManager : MonoBehaviour
             }
 
             _currentWordTemplateIndex++;
+        }
+
+    }*/
+
+    public void TryDecreasePoints(string inputWord)
+    {
+        if (_wordsTemplate[_currentWordTemplateIndex][inputWord.Length - 1] == inputWord[inputWord.Length - 1])
+        {
+            IncreasePoints(-10);
+        }
+    }
+
+    public void CheckPhoneText2(string inputWord)
+    {
+
+        if (_currentWordTemplateIndex == _wordsTemplate.Count)
+            return;
+
+        int i = inputWord.Length - 1;
+
+        if (_wordsTemplate[_currentWordTemplateIndex][i] == inputWord[i])
+        {
+            IncreasePoints(10);
+        }
+
+
+        if (inputWord == _wordsTemplate[_currentWordTemplateIndex] || inputWord.Length == _wordsTemplate[_currentWordTemplateIndex].Length)
+        {
+            StartCoroutine(ResetPhoneText());
+            if (_currentWordTemplateIndex == _wordsTemplate.Count - 1)
+            {
+                GameOver();
+            }
+
+            _currentWordTemplateIndex++;
+            UIManager.UpdateWordsTemplate(_wordsTemplate[_currentWordTemplateIndex]);
+
 
         }
 
     }
+
 
     private IEnumerator ResetPhoneText()
     {
@@ -146,12 +186,12 @@ public class GameManager : MonoBehaviour
             int j = 0;
             while (j < _wordsTemplate[i].Length)
             {
-                UIManager.UpdateAnimatedText(_wordsTemplate[i], _wordsTemplate[_currentWordTemplateIndex] == _wordsTemplate[i], j++);
+                UIManager.UpdateAnimatedText(_wordsTemplate[i], j++);
                 yield return new WaitForSeconds(interval);
             }
             if (i < _wordsTemplate.Count - 1)
             {
-                UIManager.UpdateAnimatedText("-", _wordsTemplate[_currentWordTemplateIndex] == _wordsTemplate[i], 0);
+                UIManager.UpdateAnimatedText("-", 0);
                 yield return new WaitForSeconds(interval);
             }
             i++;

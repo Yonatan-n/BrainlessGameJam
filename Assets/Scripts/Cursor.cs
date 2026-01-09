@@ -10,13 +10,13 @@ public class Cursor : MonoBehaviour
 
     void Awake()
     {
-        _startingPosition = transform.position;
+        //_startingPosition = Utils.UIToWorldPosition(GetComponent<RectTransform>(), transform.position, GameObject.Find("RootGame").GetComponent<Canvas>());
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         InvokeRepeating("blinkCursor", 0f, blinkSeconds);
-        //_startingPosition = transform.position;
+        _startingPosition = transform.position;
 
     }
 
