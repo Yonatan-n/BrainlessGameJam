@@ -1,15 +1,38 @@
 using UnityEngine;
 using TMPro;
+using System.Collections.Generic;
+
 
 public class PhoneController : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI _inputWord;
 
+    public string InputWord => _inputWord.text;
+
     private static PhoneController _instance;
 
     private float _removeTextDelay = 0.1f;
     private float _removeTextTimer = 0.0f;
+    [SerializeField] private AudioSource audioSource;
+
+    [SerializeField]
+    private AudioSource _backgroundMusic;
+
+    public float MusicTime { get; set; } = 0;
+    private List<AudioClip> loadedClips = new List<AudioClip>();
+    private List<string> getIndexOfButton = new List<string>{
+        "Pad 1", "Pad 2", "Pad 3",
+        "Pad 4", "Pad 5", "Pad 6",
+        "Pad 7", "Pad 8", "Pad 9",
+        "Pad 0", "Asterisk", "Hashtag",
+    };
+
+    private float _timeSinceLastFastType = -1.0f;
+
+    [SerializeField]
+    private InputScreen _inputScreen;
+    public InputScreen InputScreen => _inputScreen;
 
     public static PhoneController Instance
     {
@@ -45,24 +68,74 @@ public class PhoneController : MonoBehaviour
     private void Start()
     {
         _inputWord.text = "";
+
+        audioSource = GetComponent<AudioSource>();
+        var clipsByOrder = new List<string> {
+            "Sounds/button1",
+            "Sounds/button2",
+            "Sounds/button3",
+            "Sounds/button4",
+            "Sounds/button5",
+            "Sounds/button6",
+            "Sounds/button7",
+            "Sounds/button8",
+            "Sounds/button9",
+            "Sounds/button0",
+            "Sounds/button_star",
+            "Sounds/button#",
+        };
+        foreach (var path in clipsByOrder)
+        {
+            AudioClip clip = Resources.Load<AudioClip>(path);
+            loadedClips.Add(clip);
+        }
     }
 
-    public void TypeLetter(char letter, bool fastTyping)
+    public void TypeLetter(char letter, bool fastTyping, GameObject Phonebutton)
     {
+        playSound(Phonebutton);
         if (!fastTyping || _inputWord.text.Length == 0)
         {
+
             _inputWord.text += letter;
+            _inputScreen.UpdateCursor(true, false);
+            GameManager.Instance.CheckPhoneText2(_inputWord.text);
+
+
         }
+
         else if (fastTyping)
         {
+            _timeSinceLastFastType = 0.0f;
             char[] chars = _inputWord.text.ToCharArray();
             chars[_inputWord.text.Length - 1] = letter;
             string result = new string(chars);
             _inputWord.text = result;
+            _inputScreen.UpdateCursor(false, false);
         }
         else
         {
+
             _inputWord.text += letter;
+            _inputScreen.UpdateCursor(true, false);
+            GameManager.Instance.CheckPhoneText2(_inputWord.text);
+
+
+        }
+    }
+
+    private void Update()
+    {
+        MusicTime = _backgroundMusic.time;
+
+        if (_timeSinceLastFastType > -1.0f)
+        {
+            _timeSinceLastFastType += Time.deltaTime;
+        }
+        if (_timeSinceLastFastType > 0.25f)
+        {
+            GameManager.Instance.CheckPhoneText2(_inputWord.text);
+            _timeSinceLastFastType = -1.0f;
         }
     }
 
@@ -72,7 +145,9 @@ public class PhoneController : MonoBehaviour
         {
             if (clickTimer <= 0.0f)
             {
+                GameManager.Instance.TryDecreasePoints(_inputWord.text);
                 _inputWord.text = _inputWord.text.Remove(_inputWord.text.Length - 1);
+                _inputScreen.UpdateCursor(false, true);
             }
 
             else if (clickTimer > 1.0f)
@@ -80,12 +155,22 @@ public class PhoneController : MonoBehaviour
                 _removeTextTimer += Time.deltaTime;
                 if (_removeTextTimer > _removeTextDelay)
                 {
+                    GameManager.Instance.TryDecreasePoints(_inputWord.text);
                     _inputWord.text = _inputWord.text.Remove(_inputWord.text.Length - 1);
                     _removeTextTimer = 0.0f;
+                    _inputScreen.UpdateCursor(false, true);
                 }
                 _removeTextDelay -= clickTimer * Time.deltaTime * 0.04f;
+
             }
+
         }
 
+    }
+
+    public void playSound(GameObject Phonebutton)
+    {
+        var index = getIndexOfButton.IndexOf(Phonebutton.name);
+        audioSource.PlayOneShot(loadedClips[index]);
     }
 }

@@ -18,13 +18,14 @@ public class DeleteButton : PhoneButton
     {
         base.OnMousePressedThisFrame();
         PhoneController.Instance.RemoveText(0);
+        PhoneController.Instance.playSound(gameObject);
         _clickTimer = 0f;
     }
 
     public override void OnMouseDown()
     {
         _clickTimer += Time.deltaTime;
-        Debug.Log(_clickTimer);
+        // Debug.Log(_clickTimer);
         PhoneController.Instance.RemoveText(_clickTimer);
     }
 

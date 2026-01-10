@@ -10,7 +10,7 @@ public class NumberButton : PhoneButton
     [SerializeField]
     private float _fastTypeDelay = 0.25f;
 
-    private bool _typeLetter = true;
+    private bool _typeLetter = false;
 
     public override void Awake()
     {
@@ -21,7 +21,7 @@ public class NumberButton : PhoneButton
 
     public override void OnButtonClick()
     {
-        Debug.Log("Number Button clicked!");
+        // Debug.Log("Number Button clicked!");
         base.OnButtonClick();
         if (_timeSinceLastButtonClick >= _fastTypeDelay)
         {
@@ -39,7 +39,9 @@ public class NumberButton : PhoneButton
     {
         if (_typeLetter)
         {
-            PhoneController.Instance.TypeLetter(_letters.text[_currentLetterIndex], _timeSinceLastButtonClick < _fastTypeDelay);
+            PhoneController.Instance.TypeLetter(
+                _letters.text[_currentLetterIndex],
+                _timeSinceLastButtonClick < _fastTypeDelay, gameObject);
             _typeLetter = false;
             _timeSinceLastButtonClick = 0.0f;
         }
