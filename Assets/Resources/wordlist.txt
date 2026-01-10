@@ -13,7 +13,7 @@ gf
 bf
 bff
 true
-typ0
+typo
 hello
 good
 bye

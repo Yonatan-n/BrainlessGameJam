@@ -2,11 +2,19 @@ using TMPro;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
+using System;
+using System.Linq;
+using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timerTMP;
-    private float countDown = 59;
+    [SerializeField] TextAsset wordListFile;
+    [SerializeField] GameObject gameOverPanel;
+    [SerializeField] TextMeshProUGUI scoreOver;
+    [SerializeField] TextMeshProUGUI highscore;
+    [SerializeField] Button restart;
+    private bool isGameOver = false;
+    private float countDown = 60 + 4; // manual 
 
     private List<string> _wordsTemplate;
 
@@ -62,8 +70,16 @@ public class GameManager : MonoBehaviour
 
         //Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
 
-        _wordsTemplate = new List<string>
-                        { "lorem","ipsum","dolor","sit","amet","consetetur","sadipiscing","elitr","sed","diam"};
+        _wordsTemplate = new List<string>(wordListFile.text.Split(
+            System.Environment.NewLine.ToCharArray(), System.StringSplitOptions.RemoveEmptyEntries
+        ));
+
+        // randomize the wordlist
+        System.Random rnd = new System.Random();
+        _wordsTemplate = _wordsTemplate.OrderBy(_ => rnd.Next()).ToList();
+
+        // _wordsTemplate = new List<string>
+        // { "lorem","ipsum","dolor","sit","amet","consetetur","sadipiscing","elitr","sed","diam"};
 
         UIManager.Initialize(_wordsTemplate);
         _currentWordIndex = 0;
@@ -82,14 +98,39 @@ public class GameManager : MonoBehaviour
         float minutes = Mathf.Floor(countDown / 60f);
         timerTMP.text = "Time: " + string.Format("{0:00}:{1:00}", minutes, seconds);*/
 
-        float seconds = countDown - PhoneController.Instance.MusicTime;
-        float minutes = Mathf.Floor(countDown / 60f);
+        float totalSeconds = countDown - PhoneController.Instance.MusicTime;
+        var seconds = (int)(totalSeconds % 60);
+        var minutes = (int)(totalSeconds / 60f);
+        if (!isGameOver)
+            timerTMP.text = "Time: " + string.Format("{0:00}:{1:00}", minutes, seconds);
 
-        timerTMP.text = "Time: " + string.Format("{0:00}:{1:00}", minutes, seconds);
-
-
+        if (seconds == 0 && minutes == 0 && !isGameOver)
+        {
+            // time is over
+            isGameOver = true;
+            gameOver();
+        }
     }
 
+    void gameOver()
+    {
+        Debug.Log("game over");
+        gameOverPanel.SetActive(true);
+        restart.onClick.AddListener(onclickRestart);
+        if (_points > PlayerPrefs.GetInt("highscore"))
+        {
+            // new highscore
+            PlayerPrefs.SetInt("highscore", _points);
+            PlayerPrefs.Save();
+        }
+        scoreOver.text = "Current Score: " + _points;
+        highscore.text = "Highscore: " + PlayerPrefs.GetInt("highscore");
+
+    }
+    void onclickRestart()
+    {
+        SceneLoader.ReloadCurrentScene();
+    }
     /*public void CheckPhoneText(string inputWord)
     {
 

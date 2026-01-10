@@ -48,7 +48,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -117,19 +117,129 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 4096
-        height: 13824
+        y: 1707
+        width: 607
+        height: 341
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a47fddff2076daef0800000000000000
-      internalID: -95306754524580022
+      spriteID: 42d228eefea17244b808455693bd2323
+      internalID: -1828785230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgdone_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1366
+        width: 607
+        height: 341
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57ce500dc09cc204ea72fd01c59944cc
+      internalID: -1353438424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgdone_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1025
+        width: 607
+        height: 341
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39449ef88498b8340b1478b5ae578447
+      internalID: 308343975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgdone_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 684
+        width: 607
+        height: 341
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e31172bf7a0f2543859979c5d65f25f
+      internalID: 797605719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgdone_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 343
+        width: 607
+        height: 341
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fd9ea7938b90e646ab901d779e5fcb1
+      internalID: 1795112512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgdone_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2
+        width: 607
+        height: 341
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfa2b405cf097e74cac2f4d66a8717e9
+      internalID: 810901641
       vertices: []
       indices: 
       edges: []
@@ -138,7 +248,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 142e4e5bacdb1e040b605f08cf97d28a
     internalID: 0
     vertices: []
     indices: 
@@ -146,9 +256,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceOnImport
+        value: True
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":true,"gridCellCount":{"x":1.0,"y":6.0},"gridSpriteSize":{"x":4096.0,"y":2304.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      bgdone_0: -95306754524580022
+      bgdone_0: -1828785230
+      bgdone_1: -1353438424
+      bgdone_2: 308343975
+      bgdone_3: 797605719
+      bgdone_4: 1795112512
+      bgdone_5: 810901641
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
