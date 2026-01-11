@@ -13,6 +13,8 @@ public static class UIManager
     private static string _oldWordTemplate = "";
     private static string _currentWordTemplate = "";
 
+    public static int LastWordTemplateOffset { get; set; } = 0;
+
     public static event Action _onWordDisappeared;
 
     public static void Initialize(List<string> wordsTemplate)
@@ -40,13 +42,19 @@ public static class UIManager
         _points.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = points.ToString();
     }
 
+    public static void SaveOldWordTemplateWordIndex()
+    {
+        var text = _animatedWordsTemplate.transform.Find("Text").GetComponent<TextMeshProUGUI>().text;
+        LastWordTemplateOffset = text.IndexOf(GameManager.Instance.CurrentWordTemplate);
+    }
+
     public static void UpdateWordsTemplate(string wordTemplate)
     {
         _animatedWordsTemplate.transform.Find("Text").GetComponent<TextMeshProUGUI>().ForceMeshUpdate();
         var text = _animatedWordsTemplate.transform.Find("Text").GetComponent<TextMeshProUGUI>().text;
         TMP_TextInfo textInfo = _animatedWordsTemplate.transform.Find("Text").GetComponent<TextMeshProUGUI>().textInfo;
 
-        int i = text.IndexOf(wordTemplate);
+        int i = text.IndexOf(wordTemplate, LastWordTemplateOffset);
 
         var start = i;
         var end = i + wordTemplate.Length;

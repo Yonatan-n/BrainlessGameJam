@@ -221,6 +221,7 @@ public class GameManager : MonoBehaviour
 
     public void NextWord()
     {
+        UIManager.SaveOldWordTemplateWordIndex();
         _currentWordTemplateIndex++;
         UIManager.UpdateWordsTemplate(_wordsTemplate[_currentWordTemplateIndex]);
         UIManager.IncreasePoints(_points);
