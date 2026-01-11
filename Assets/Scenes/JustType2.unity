@@ -147,8 +147,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 7b6978ae98ee0d1429dd7507d9c476b4, type: 3}
-  m_PlayOnAwake: 1
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -664,7 +664,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -13, y: -19.090027}
+  m_AnchoredPosition: {x: -13, y: -19.090057}
   m_SizeDelta: {x: -669.3188, y: -439.6982}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &332168666
@@ -2312,7 +2312,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978597787}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -3859,6 +3859,10 @@ MonoBehaviour:
   scoreOver: {fileID: 1754955934}
   highscore: {fileID: 359890546}
   restart: {fileID: 2108877093}
+  audioSource: {fileID: 978597788}
+  musicClips:
+  - {fileID: 8300000, guid: 8d1bfb045d5ebc14791c0e012e7f6ca1, type: 3}
+  - {fileID: 8300000, guid: 04d6ad31e2b8d5643908bb2efa7c05dc, type: 3}
   _wordsTemplateAnimDelay: 1
 --- !u!114 &1797030702
 MonoBehaviour:
@@ -4313,7 +4317,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PhoneController
   _inputWord: {fileID: 1545785171}
   audioSource: {fileID: 0}
-  _backgroundMusic: {fileID: 40593512}
   _inputScreen: {fileID: 1545785170}
 --- !u!82 &2007213505
 AudioSource:

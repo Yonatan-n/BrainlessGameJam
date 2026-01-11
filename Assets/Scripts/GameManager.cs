@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreOver;
     [SerializeField] TextMeshProUGUI highscore;
     [SerializeField] Button restart;
+    [SerializeField] public AudioSource audioSource;
+    [SerializeField] List<AudioClip> musicClips;
     private bool isGameOver = false;
     private float countDown = 60 + 4; // manual 
 
@@ -61,17 +63,9 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // TODO: randomize words
-        // get a common english wordlist,
-        // filter it abit
-        // get 15 words
-        // get 5 words from our dict (cya, brb, u2, 4ever)
-        // combine both lists and randomize for a 20 words sentence.
-        // mabybe 100 words just to be safe
-
-
-        //Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-
+        int randomIndex = UnityEngine.Random.Range(0, musicClips.Count);
+        audioSource.clip = musicClips[randomIndex]; // set a random clip each time
+        audioSource.Play();
         _wordsTemplate = new List<string>(wordListFile.text.Split(
             System.Environment.NewLine.ToCharArray(), System.StringSplitOptions.RemoveEmptyEntries
         ));

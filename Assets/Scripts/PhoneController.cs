@@ -15,9 +15,6 @@ public class PhoneController : MonoBehaviour
     private float _removeTextTimer = 0.0f;
     [SerializeField] private AudioSource audioSource;
 
-    [SerializeField]
-    private AudioSource _backgroundMusic;
-
     public float MusicTime { get; set; } = 0;
     private List<AudioClip> loadedClips = new List<AudioClip>();
     private List<string> getIndexOfButton = new List<string>{
@@ -123,7 +120,7 @@ public class PhoneController : MonoBehaviour
 
     private void Update()
     {
-        MusicTime = _backgroundMusic.time;
+        MusicTime = GameManager.Instance.audioSource.time; //_backgroundMusic.time;
 
         if (_timeSinceLastFastType > -1.0f)
         {
