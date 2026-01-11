@@ -1662,7 +1662,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5766940845881626664, guid: 7883ded87ee96e2468c2e9a7ede02098, type: 3}
       propertyPath: m_text
-      value: Options
+      value: How to Play
       objectReference: {fileID: 0}
     - target: {fileID: 5775690021443578661, guid: 7883ded87ee96e2468c2e9a7ede02098, type: 3}
       propertyPath: m_Name
