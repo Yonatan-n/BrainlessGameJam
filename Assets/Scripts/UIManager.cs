@@ -45,7 +45,7 @@ public static class UIManager
     public static void SaveOldWordTemplateWordIndex()
     {
         var text = _animatedWordsTemplate.transform.Find("Text").GetComponent<TextMeshProUGUI>().text;
-        LastWordTemplateOffset = text.IndexOf(GameManager.Instance.CurrentWordTemplate);
+        LastWordTemplateOffset = text.IndexOf(GameManager.Instance.CurrentWordTemplate) + GameManager.Instance.CurrentWordTemplate.Length;
     }
 
     public static void UpdateWordsTemplate(string wordTemplate)
