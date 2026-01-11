@@ -2,7 +2,6 @@ using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
 
-
 public class PhoneController : MonoBehaviour
 {
     [SerializeField]
@@ -33,6 +32,8 @@ public class PhoneController : MonoBehaviour
     [SerializeField]
     private InputScreen _inputScreen;
     public InputScreen InputScreen => _inputScreen;
+
+    private GameObject _pressedNumberButton = null;
 
     public static PhoneController Instance
     {
@@ -94,19 +95,18 @@ public class PhoneController : MonoBehaviour
     public void TypeLetter(char letter, bool fastTyping, GameObject Phonebutton)
     {
         playSound(Phonebutton);
+        _timeSinceLastFastType = 0.0f;
+
         if (!fastTyping || _inputWord.text.Length == 0)
         {
 
             _inputWord.text += letter;
             _inputScreen.UpdateCursor(true, false);
-            GameManager.Instance.CheckPhoneText2(_inputWord.text);
-
-
         }
 
         else if (fastTyping)
         {
-            _timeSinceLastFastType = 0.0f;
+            //_timeSinceLastFastType = 0.0f;
             char[] chars = _inputWord.text.ToCharArray();
             chars[_inputWord.text.Length - 1] = letter;
             string result = new string(chars);
@@ -115,13 +115,10 @@ public class PhoneController : MonoBehaviour
         }
         else
         {
-
             _inputWord.text += letter;
             _inputScreen.UpdateCursor(true, false);
-            GameManager.Instance.CheckPhoneText2(_inputWord.text);
-
-
         }
+        _pressedNumberButton = Phonebutton;
     }
 
     private void Update()
@@ -134,7 +131,7 @@ public class PhoneController : MonoBehaviour
         }
         if (_timeSinceLastFastType > 0.25f)
         {
-            GameManager.Instance.CheckPhoneText2(_inputWord.text);
+            GameManager.Instance.CheckPhoneText2(_inputWord.text, _pressedNumberButton.GetComponent<NumberButton>());
             _timeSinceLastFastType = -1.0f;
         }
     }

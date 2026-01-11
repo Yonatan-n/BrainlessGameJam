@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Runtime.Serialization;
 
 public class NumberButton : PhoneButton
 {
@@ -12,10 +13,17 @@ public class NumberButton : PhoneButton
 
     private bool _typeLetter = false;
 
+    [SerializeField]
+    private string number;
+
+    private string _possibleChars;
+    public string PossibleChars => _possibleChars;
+
     public override void Awake()
     {
         base.Awake();
         _letters = transform.Find("Text (TMP) (1)").gameObject.GetComponent<TextMeshProUGUI>();
+        _possibleChars = _letters.text + number;
         _currentLetterIndex = 0;
     }
 
@@ -23,14 +31,16 @@ public class NumberButton : PhoneButton
     {
         // Debug.Log("Number Button clicked!");
         base.OnButtonClick();
-        if (_timeSinceLastButtonClick >= _fastTypeDelay)
+        if (_timeSinceLastButtonClick > _fastTypeDelay)
         {
             _currentLetterIndex = 0;
         }
         else
         {
             _currentLetterIndex++;
-            _currentLetterIndex = _currentLetterIndex % _letters.text.Length;
+            _currentLetterIndex = _currentLetterIndex % _possibleChars.Length;
+            //_currentLetterIndex = _currentLetterIndex % _letters.text.Length;
+
         }
         _typeLetter = true;
     }
@@ -40,7 +50,7 @@ public class NumberButton : PhoneButton
         if (_typeLetter)
         {
             PhoneController.Instance.TypeLetter(
-                _letters.text[_currentLetterIndex],
+                _possibleChars[_currentLetterIndex],
                 _timeSinceLastButtonClick < _fastTypeDelay, gameObject);
             _typeLetter = false;
             _timeSinceLastButtonClick = 0.0f;

@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
 
     private int _points = 0;
 
+    private List<int> _pointsCache = new List<int>();
+
     public static GameManager Instance
     {
         get
@@ -160,28 +162,42 @@ public class GameManager : MonoBehaviour
 
     public void TryDecreasePoints(string inputWord)
     {
+        if (inputWord.Length > _wordsTemplate[_currentWordTemplateIndex].Length)
+            return;
+
         if (_wordsTemplate[_currentWordTemplateIndex][inputWord.Length - 1] == inputWord[inputWord.Length - 1])
         {
-            IncreasePoints(-10);
+            //IncreasePoints(-10);
+            IncreasePoints(-_pointsCache[_pointsCache.Count - 1]);
+            _pointsCache.RemoveAt(_pointsCache.Count - 1);
+
         }
     }
 
-    public void CheckPhoneText2(string inputWord)
+    public void CheckPhoneText2(string inputWord, NumberButton phoneButton)
     {
 
-        if (_currentWordTemplateIndex == _wordsTemplate.Count)
+        if (_currentWordTemplateIndex == _wordsTemplate.Count || inputWord.Length > _wordsTemplate[_currentWordTemplateIndex].Length)
+            return;
+
+        //This can happen and cause bugs
+        if (inputWord == "")
             return;
 
         int i = inputWord.Length - 1;
 
         if (_wordsTemplate[_currentWordTemplateIndex][i] == inputWord[i])
         {
-            IncreasePoints(10);
+            var points = (phoneButton.PossibleChars.IndexOf(inputWord[i]) + 1) * 10;
+            _pointsCache.Add(points);
+            IncreasePoints(points);
         }
 
 
-        if (inputWord == _wordsTemplate[_currentWordTemplateIndex] || inputWord.Length == _wordsTemplate[_currentWordTemplateIndex].Length)
+        /*if (inputWord == _wordsTemplate[_currentWordTemplateIndex] || inputWord.Length == _wordsTemplate[_currentWordTemplateIndex].Length)
         {
+            //Bug: phone text gets reset before last character is entered correctly
+            Debug.Log("PHONE TEXT RESET");
             StartCoroutine(ResetPhoneText());
             if (_currentWordTemplateIndex == _wordsTemplate.Count - 1)
             {
@@ -190,12 +206,26 @@ public class GameManager : MonoBehaviour
 
             _currentWordTemplateIndex++;
             UIManager.UpdateWordsTemplate(_wordsTemplate[_currentWordTemplateIndex]);
-
-
-        }
-
+        }*/
     }
 
+    public void ResetInput(string inputWord)
+    {
+        //add minus points if input word is longer than current word
+        for (int i = inputWord.Length; i > _wordsTemplate[_currentWordTemplateIndex].Length; i--)
+        {
+            IncreasePoints(-10);
+        }
+        StartCoroutine(ResetPhoneText());
+    }
+
+    public void NextWord()
+    {
+        _currentWordTemplateIndex++;
+        UIManager.UpdateWordsTemplate(_wordsTemplate[_currentWordTemplateIndex]);
+        UIManager.IncreasePoints(_points);
+
+    }
 
     private IEnumerator ResetPhoneText()
     {
@@ -206,6 +236,7 @@ public class GameManager : MonoBehaviour
     private void UpdateCurrentWordTemplate()
     {
         _currentWordTemplateIndex++;
+
     }
 
     private void GameOver()
@@ -216,7 +247,7 @@ public class GameManager : MonoBehaviour
     public void IncreasePoints(int points)
     {
         _points += points;
-        UIManager.IncreasePoints(_points);
+        //UIManager.IncreasePoints(_points);
     }
 
     private IEnumerator UpdateAnimatedText(float interval)

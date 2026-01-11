@@ -37,7 +37,7 @@ public abstract class PhoneButton : MonoBehaviour, IPointerEnterHandler, IPointe
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
         if (_mouseHovering)
         {

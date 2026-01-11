@@ -1,12 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
-public class StartMenu : MonoBehaviour
+public class OptionsMenu : MonoBehaviour
 {
     [SerializeField] private Button start;
-    [SerializeField] private Button options;
-    [SerializeField] private Button quit;
+    [SerializeField] private Button back;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,13 +12,10 @@ public class StartMenu : MonoBehaviour
         {
             start.onClick.AddListener(startGame);
         }
-        if (options != null)
+
+        if (back != null)
         {
-            options.onClick.AddListener(OpenOptions);
-        }
-        if (quit != null)
-        {
-            quit.onClick.AddListener(QuitGame);
+            back.onClick.AddListener(Back);
         }
     }
 
@@ -36,15 +31,10 @@ public class StartMenu : MonoBehaviour
         //SceneLoader.LoadNextScene();
         SceneManager.LoadScene("JustType2");
     }
-    void OpenOptions()
-    {
-        Debug.Log("options");
-        SceneManager.LoadScene("OptionsPanel");
-    }
 
 
-    void QuitGame()
+    void Back()
     {
-        Application.Quit();
+        SceneManager.LoadScene("StartGame");
     }
 }

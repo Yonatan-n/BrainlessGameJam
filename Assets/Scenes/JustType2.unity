@@ -279,11 +279,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1797030700}
+  m_Father: {fileID: 1545785173}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 898.65546, y: -220.45328}
+  m_AnchoredPosition: {x: 11, y: -52}
   m_SizeDelta: {x: 4.1864014, y: 36.9718}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &66868501
@@ -456,7 +456,7 @@ PrefabInstance:
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 983182626}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -467,7 +467,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PhoneButton, Assembly-CSharp
+      value: SubmitButton, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6763132837160645782, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -476,7 +476,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3150659083967955366, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 983182626}
   m_SourcePrefab: {fileID: 100100000, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
 --- !u!224 &140748047 stripped
 RectTransform:
@@ -661,7 +664,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -13, y: -19.09}
+  m_AnchoredPosition: {x: -13, y: -19.090027}
   m_SizeDelta: {x: -669.3188, y: -439.6982}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &332168666
@@ -1711,6 +1714,7 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   _fastTypeDelay: 0.3
+  number: 9
 --- !u!1001 &830746299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2413,6 +2417,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &983182622 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3150659083967955366, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
+  m_PrefabInstance: {fileID: 140748046}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &983182626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983182622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 761f18c3f61e40c4aa39dc74825fb8e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SubmitButton
+  clickAction:
+    m_Name: Click
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 8b9e0c03-c363-4a72-b39c-a1dbf86ed9b4
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &990431328
 GameObject:
   m_ObjectHideFlags: 0
@@ -2658,6 +2688,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pad 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3603290343334306389, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
+      propertyPath: m_text
+      value: abc
+      objectReference: {fileID: 0}
     - target: {fileID: 6132536412381546974, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2801,6 +2835,7 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   _fastTypeDelay: 0.3
+  number: 2
 --- !u!1001 &1069442308
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2964,6 +2999,7 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   _fastTypeDelay: 0.3
+  number: 3
 --- !u!1 &1175742451 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3150659083967955366, guid: 4016d8e953e296844a61a9e0a9f17b3c, type: 3}
@@ -2991,6 +3027,7 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   _fastTypeDelay: 0.3
+  number: 6
 --- !u!1001 &1363566839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3154,6 +3191,7 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   _fastTypeDelay: 0.3
+  number: 4
 --- !u!1 &1389125501
 GameObject:
   m_ObjectHideFlags: 0
@@ -3187,10 +3225,10 @@ RectTransform:
   - {fileID: 903684610}
   m_Father: {fileID: 1797030700}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1957, y: -122}
-  m_SizeDelta: {x: 151.6657, y: 109}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 99, y: -141}
+  m_SizeDelta: {x: 151.66565, y: 109}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1389125503
 CanvasRenderer:
@@ -3234,8 +3272,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 4.661704, y: -54.5}
-  m_SizeDelta: {x: 1496.257, y: 109}
+  m_AnchoredPosition: {x: -0.011662, y: -54.5}
+  m_SizeDelta: {x: 1313.8, y: 109}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1407098091
 MonoBehaviour:
@@ -3537,7 +3575,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 66868500}
   m_Father: {fileID: 846034042}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3794,7 +3833,6 @@ RectTransform:
   - {fileID: 990431329}
   - {fileID: 1389125502}
   - {fileID: 909373189}
-  - {fileID: 66868500}
   - {fileID: 332168665}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3884,6 +3922,7 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   _fastTypeDelay: 0.3
+  number: 7
 --- !u!1001 &1920092678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4047,6 +4086,7 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   _fastTypeDelay: 0.3
+  number: 5
 --- !u!1 &1968356586
 GameObject:
   m_ObjectHideFlags: 0
@@ -4081,7 +4121,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000076294, y: 0}
+  m_AnchoredPosition: {x: -0.00012207031, y: 0}
   m_SizeDelta: {x: 0.000076294, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1968356588
@@ -4540,6 +4580,7 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   _fastTypeDelay: 0.3
+  number: 8
 --- !u!1001 &2108877090
 PrefabInstance:
   m_ObjectHideFlags: 0
